@@ -2,19 +2,19 @@
   "type": "object",
   "properties": {
     "id": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "task": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "id": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "name": {
           "type": ["string", "null"]
         },
         "status": {
-          "type": "object",
+          "type": ["object", "null"],
           "properties": {
             "status": {
               "type": ["string", "null"]
@@ -26,7 +26,7 @@
               "type": ["string", "null"]
             },
             "orderindex": {
-              "type": "integer"
+              "type": ["integer", "null"]
             }
           }
         },
@@ -39,10 +39,10 @@
       "type": ["string", "null"]
     },
     "user": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "id": {
-          "type": "integer"
+          "type": ["integer", "null"]
         },
         "username": {
           "type": ["string", "null"]
@@ -62,7 +62,7 @@
       }
     },
     "billable": {
-      "type": "boolean"
+      "type": ["boolean", "null"]
     },
     "start": {
       "type": ["string", "null"]
@@ -77,7 +77,7 @@
       "type": ["string", "null"]
     },
     "tags": {
-      "type": "array"
+      "type": ["array", "null"]
     },
     "source": {
       "type": ["string", "null"]
@@ -86,7 +86,7 @@
       "type": ["string", "null"]
     },
     "task_location": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "list_id": {
           "type": ["string", "null"]
