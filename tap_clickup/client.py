@@ -99,6 +99,7 @@ class ClickUpStream(RESTStream):
             msg = (
                 f"{response.status_code} Client Error: "
                 f"{response.reason} for path: {self.path}"
+                f"with error {response.text}"
             )
             raise FatalAPIError(msg)
 

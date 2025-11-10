@@ -4,6 +4,7 @@ from typing import Optional, Any, Dict
 import requests
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from tap_clickup.client import ClickUpStream
+from pendulum import parse as parse_datetime
 
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
@@ -248,7 +249,17 @@ class TasksStream(ClickUpStream):
         params["subtasks"] = "true"
         params["order_by"] = "updated"
         params["reverse"] = "true"
-        params["date_updated_gt"] = self.get_starting_replication_key_value(context)
+        start_date = self.get_starting_replication_key_value(context)
+        if start_date:
+            # If the start_date is a string and contains a `T`, it's a datetime object
+            # so we need to convert it to a unix timestamp (Initial syncs use this format)
+            if "T" in start_date:
+                start_date = parse_datetime(start_date)
+                unix_ms = int(start_date.timestamp() * 1000)
+                params["date_updated_gt"] = unix_ms
+            else:
+                params["date_updated_gt"] = start_date # Already a unix timestamp from state
+
         return params
 
     def get_next_page_token(
