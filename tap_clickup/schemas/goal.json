@@ -59,12 +59,12 @@
             "type": ["boolean", "null"]
         },
         "owners": {
-            "type": "array",
+            "type": ["array", "null"],
             "items": {
             "type": "object",
             "properties": {
                 "id": {
-                "type": "integer"
+                "type": ["integer", "null"]
                 },
                 "email": {
                 "type": ["string", "null"]
@@ -88,19 +88,19 @@
             "type": ["integer", "null"]
         },
         "members": {
-            "type": "array"
+            "type": ["array", "null"]
         },
         "group_members": {
-            "type": "array"
+            "type": ["array", "null"]
         },
         "percent_completed": {
             "type": ["integer", "number", "null"]
         },
         "key_results": {
-            "type": "array"
+            "type": ["array", "null"]
         },
         "history": {
-            "type": "array"
+            "type": ["array", "null"]
         },
         "pretty_url": {
             "type": ["string", "null"]
